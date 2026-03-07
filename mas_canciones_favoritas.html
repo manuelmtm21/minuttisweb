@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Más Canciones Favoritas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #7A9F35;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gallery-container {
+            animation: fadeIn 1s ease-in-out;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px;
+            padding-top: 20px;
+        }
+        .gallery {
+            border: 1px solid #ccc;
+            width: calc(25% - 20px);
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            transition: 0.3s;
+        }
+        .gallery:hover {
+            border: 1px solid #777;
+        }
+        .desc {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            flex-grow: 1;
+        }
+        .play-btn {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        .gallery:hover .play-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            margin-top: 10px;
+            background-color: #ddd;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        .progress-bar::-webkit-progress-bar {
+            background-color: #f3f3f3;
+        }
+        .progress-bar::-webkit-progress-value {
+            background-color: #4caf50;
+        }
+        footer {
+            background-color: #354F00;
+            color: white;
+            text-align: center;
+            padding: 3px 0;
+            margin-top: auto;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+        }
+        footer p {
+            margin: 0;
+        }
+        .menu {
+            background-color: #354F00;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        .menu select {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            background-color: #7A9F35;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .menu select option {
+            background-color: #7A9F35;
+            color: white;
+            font-weight: bold;
+        }
+        @media only screen and (max-width: 1320px) {
+            .gallery {
+                width: calc(33.333% - 20px);
+            }
+        }
+        @media only screen and (max-width: 900px) {
+            .gallery {
+                width: calc(50% - 20px);
+            }
+        }
+        @media only screen and (max-width: 600px) {
+            .gallery {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <select id="menu" onchange="cambiarTextoYRedirigir(event)">
+        <option value="canciones_favoritas.html">Canciones Favoritas</option>
+        <option value="mas_canciones_favoritas.html" selected>Más Canciones Favoritas</option>
+    </select>
+</div>
+    <div class="gallery-container">
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/20I8RduZC2PWMWTDCZuuAN?si=d05d6ab11e9149ff">
+                <img src="cancionesimg/cancion9.jpg" alt="Take Me Out - Franz Ferdinand">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/take_me_out.mp3', this, 'progress1')">▶</button>
+            <div class="desc">Take Me Out - Franz Ferdinand</div>
+            <progress id="progress1" class="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/63OQupATfueTdZMWTxW03A?si=e8dc51f07b0e4bb9">
+                <img src="cancionesimg/cancion10.jpg" alt="Karma Police - Radiohead">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/karma_police.mp3', this, 'progress2')">▶</button>
+            <div class="desc">Karma Police - Radiohead</div>
+            <progress id="progress2" class="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/5e0b9LgOfi3aJSKXFcOWRe?si=0093e7a2d3704deb">
+                <img src="cancionesimg/cancion11.jpg" alt="Beanie - Chezile">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/beanie.mp3', this, 'progress3')">▶</button>
+            <div class="desc">Beanie - Chezile</div>
+            <progress id="progress3" class="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/08KTQSs3ickNki7FFTb6fY?si=1a139e1dfcc9400e">
+                <img src="cancionesimg/cancion12.jpg" alt="The Cult of Dionysus - The Orion Experience, ORION, Linda XO">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/the_cult_of_dionysus.mp3', this, 'progress4')">▶</button>
+            <div class="desc">The Cult of Dionysus - The Orion Experience</div>
+            <progress id="progress4" class="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/5FVd6KXrgO9B3JPmC8OPst?si=b0bf20942a2a462e">
+                <img src="cancionesimg/cancion13.jpg" alt="Creep - Radiohead">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/creep.mp3', this, 'progress5')">▶</button>
+            <div class="desc">Creep - Radiohead</div>
+            <progress id="progress5" class="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/0FDzzruyVECATHXKHFs9eJ?si=3f0f69946e1b4a1d">
+                <img src="cancionesimg/cancion14.jpg" alt="Sex, Drugs, Etc. - Beach Weather">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/sex_drugs_etc.mp3', this, 'progress6')">▶</button>
+            <div class="desc">Sex, Drugs, Etc. - Beach Weather</div>
+            <progress id="progress6" class="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/0HqZX76SFLDz2aW8aiqi7G?si=1263a1bbfce94811">
+                <img src="cancionesimg/cancion15.jpg" alt="Glimpse of Us - Joji">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/glimpse_of_us.mp3', this, 'progress7')">▶</button>
+            <div class="desc">Glimpse of Us - Joji</div>
+            <progress id="progress7" class="progress-bar" value="0" max="100"></progress>
+        </div>
+
+        <div class="gallery">
+            <a target="_blank" href="https://open.spotify.com/intl-es/track/3gVhsZtseYtY1fMuyYq06F?si=e86f406ee5894508">
+                <img src="cancionesimg/cancion16.jpg" alt="A Side / B Side - Tipling Rock">
+            </a>
+            <button class="play-btn" onclick="playAudio('cancionesmp3/a_side_b_side.mp3', this, 'progress8')">▶</button>
+            <div class="desc">A Side / B Side - Tipling Rock</div>
+            <progress id="progress8" class="progress-bar" value="0" max="100"></progress>
+        </div>
+    </div>
+
+    <audio id="audioPlayer" style="display: none;" controls>
+        <source id="audioSource" src="" type="audio/mp3">
+        Tu navegador no soporta el reproductor de audio.
+    </audio>
+
+    <script>
+        var audioPlayer = document.getElementById('audioPlayer');
+        var audioSource = document.getElementById('audioSource');
+        var currentSong = "";
+        var isPlaying = false;
+        var lastTime = 0;
+
+        function playAudio(song, button, progressId) {
+            if (!isPlaying || currentSong !== song) {
+                if (currentSong !== song) {
+                    audioSource.src = song;
+                    audioPlayer.load();
+                    currentSong = song;
+                    lastTime = 0;
+                } else {
+                    audioPlayer.currentTime = lastTime;
+                }
+                audioPlayer.play();
+                button.textContent = "❚❚";
+                isPlaying = true;
+                updateProgress(progressId);
+            } else {
+                lastTime = audioPlayer.currentTime;
+                audioPlayer.pause();
+                button.textContent = "▶";
+                isPlaying = false;
+            }
+        }
+
+        function updateProgress(progressId) {
+            var progressBar = document.getElementById(progressId);
+            audioPlayer.ontimeupdate = function () {
+                var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressBar.value = progress;
+            };
+
+            progressBar.onclick = function (e) {
+                var percent = (e.offsetX / progressBar.offsetWidth);
+                audioPlayer.currentTime = percent * audioPlayer.duration;
+            };
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var menu = document.getElementById("menu");
+            
+            menu.onchange = function(event) {
+                var ruta = menu.value;
+                if (ruta) {
+                    localStorage.setItem("ultimaSeleccion", ruta);
+                    console.log("Redirigiendo a:", ruta);
+                    setTimeout(() => {
+                        window.location.href = ruta;
+                    }, 300);
+                }
+            };
+        });
+    </script>
+
+    <footer>
+        <p>TECNM Instituto Tecnológico De Puebla - Manuel Minutti Moreno<br>Copyright © 2025. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

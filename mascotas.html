@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mascotas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #7A9F35;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .contenedor {
+            animation: fadeIn 1s ease-in-out;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        td {
+            text-align: center;
+            vertical-align: top;
+            padding: 10px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: auto;
+            height: auto;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .card img {
+            width: auto;
+            height: auto;
+			object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 15px 15px 0 0;
+			display: block;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 15px;
+            padding: 15px;
+        }
+        .card:hover .overlay {
+            opacity: 1;
+        }
+        .card .overlay ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style-type: disc;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .card .overlay li {
+            margin-bottom: 5px;
+        }
+        .card:nth-child(1) img,
+        .card:nth-child(2) img {
+            width: 300px;
+            height: auto;
+        }
+        .card.grande img {
+            width: 700px;
+            height: auto;
+        }
+        footer {
+            background-color: #354F00;
+            color: white;
+            text-align: center;
+            padding: 3px 0;
+            width: 100%;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 0;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        @media (max-width: 768px) {
+            table, td {
+                display: block;
+                width: 100%;
+            }
+            .card {
+                width: 100%;
+                max-width: 600px;
+                margin: 10px auto;
+            }
+            .card img {
+                width: 100%;
+                height: auto;
+            }
+            .card.grande img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+<table width="500" border="0">
+    <tr><td> <div class="card">
+                <img src="mascotas/mascotas1.jpg" alt="Vicky, Pelusa, Pachona">
+                <div class="overlay">
+                    <ul>
+                        <li>Vicky</li><br>
+                        <li>Pelusa</li><br>
+                        <li>Pachona</li>
+                    </ul>
+                </div></div></td>
+        <td> <div class="card">
+                <img src="mascotas/mascotas3.jpg" alt="Pachona">
+                <div class="overlay">
+                    <ul>
+                        <li>Pachona</li>
+                    </ul>
+                </div></div></td></tr>
+    <tr> <td colspan="2">
+            <div class="card grande">
+                <img src="mascotas/mascotas2.jpg" alt="Mely, Negra, Max">
+                <div class="overlay">
+                    <ul>
+                        <li>Mely</li><br>
+                        <li>Negra</li><br>
+                        <li>Max</li>
+                    </ul>
+                </div></div></td></tr>
+</table></div>
+<footer>
+    <p>TECNM Instituto Tecnológico De Puebla - Manuel Minutti Moreno<br>Copyright © 2025. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

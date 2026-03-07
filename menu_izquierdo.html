@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menú Izquierdo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #567714;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 8px;
+            margin: 6px 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        a:hover {
+            background-color: #7A9F35;
+            transform: translateX(10px);
+        }
+        a.selected {
+            background-color: #7A9F35;
+            color: white;
+            font-weight: bold;
+            transform: translateX(5px);
+            border-left: 4px solid #354F00;
+            padding-top: 11px;
+            padding-bottom: 9px;
+        }
+    </style>
+<script>
+    function normalizarTexto(texto) {
+        return texto.toLowerCase()
+                   .normalize("NFD")
+                   .replace(/[\u0300-\u036f]/g, "")
+                   .replace(/[^a-z0-9 ]/g, "")
+                   .trim();
+    }
+
+    function manejarClicMenu(event) {
+        event.preventDefault();
+        const textoSeccion = this.getAttribute('data-seccion') || 
+                          this.textContent.replace(/[^\w\s]/g, '').trim();
+        const nombreArchivo = normalizarTexto(textoSeccion).replace(/ /g, '_') + '.html';
+        
+        parent.postMessage({
+            action: "cambioSeccion",
+            pagina: nombreArchivo,
+            titulo: textoSeccion
+        }, "*");
+    }
+
+        function actualizarMenu(seccion) {
+            const textoNormalizado = normalizarTexto(seccion);
+            
+            document.querySelectorAll('a').forEach(enlace => {
+                enlace.classList.remove('selected');
+                const enlaceTexto = normalizarTexto(
+                    enlace.getAttribute('data-seccion') || enlace.textContent
+                );
+                if (enlaceTexto === textoNormalizado) {
+                    enlace.classList.add('selected');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a').forEach(enlace => {
+                enlace.addEventListener('click', manejarClicMenu);
+            });
+
+            window.addEventListener("message", function(event) {
+                if (event.data?.action === "actualizarMenu") {
+                    actualizarMenu(event.data.seccion);
+                }
+            });
+
+            const storedTitle = sessionStorage.getItem('currentTitle') || "Sobre Mí";
+            actualizarMenu(storedTitle);
+        });
+</script>
+</head>
+<body>
+    <a href="sobre_mi.html" data-seccion="Sobre Mí"><strong>🙋 Sobre Mí</strong></a>
+    <a href="familia.html" data-seccion="Familia"><strong>👨‍👩‍👧‍👦 Familia</strong></a>
+    <a href="amigos.html" data-seccion="Amigos"><strong>👥 Amigos</strong></a>
+    <a href="estudios.html" data-seccion="Estudios"><strong>🧑‍🎓 Estudios</strong></a>
+    <a href="mascotas.html" data-seccion="Mascotas"><strong>🐕 Mascotas</strong></a>
+    <a href="hobbies.html" data-seccion="Hobbies"><strong>🎭 Hobbies</strong></a>
+    <a href="recuerdos.html" data-seccion="Recuerdos"><strong>📸 Recuerdos</strong></a>
+    <a href="canciones_favoritas.html" data-seccion="Canciones Favoritas"><strong>🎶 Canciones Favoritas</strong></a>
+    <a href="peliculas_favoritas.html" data-seccion="Películas Favoritas"><strong>🎞️ Películas Favoritas</strong></a>
+    <a href="contacto.html" data-seccion="Contacto"><strong>📩 Contacto</strong></a>
+</body>
+</html>

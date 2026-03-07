@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #7A9F35;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }     
+        .contenido {
+            animation: fadeIn 1s ease-in-out;
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        table {
+            width: 80%;
+            border-collapse: separate;
+            border-spacing: 35px;
+            margin-left: 10%;
+        }
+        td {
+            text-align: center;
+            padding: 10px;
+        }
+        .polaroid {
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+            text-align: center;
+            padding: 15px;
+            border-radius: 20px;
+        }
+        .polaroid img {
+            width: 100%;
+            border-radius: 4%;
+            object-fit: cover;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .polaroid .container {
+            padding: 10px 20px;
+            color: black;
+        }
+        .polaroid:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        footer {
+            background-color: #354F00;
+            color: white;
+            text-align: center;
+            padding: 3px 0;
+            width: 100%;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 0;
+            font-weight: normal;
+        }
+        @media (max-width: 768px) {
+            table {
+                width: 90%;
+                margin-left: 5%;
+                border-spacing: 10px;
+            }
+            .polaroid {
+                max-width: 100%;
+            }
+        }        
+    </style>
+</head>
+<body>
+<div class="contenido">
+    <table>
+        <tr><td> <div class="polaroid">
+                    <img src="amigos/amigos1.jpg" alt="Amigos 1">
+                    <div class="container">
+                        <p>Foto de generación con mis mejores amigos, cuando ya íbamos a finalizar la preparatoria todos juntos.<br>
+                            <UL>
+                                <LI>Julian
+                                <LI>Carlos
+                                <LI>Adan
+                                <LI>Erick
+                            </UL>
+                    </div></div></td>
+            <td> <div class="polaroid">
+                    <img src="amigos/amigos2.jpg" alt="Amigos 2">
+                    <div class="container">
+                        <p>Foto de recuerdo con algunos amigos de la preparatoria.<br>
+                            <UL>
+                                <LI>Farid
+                                <LI>Erick
+                                <LI>Daniela
+                                <LI>Karen
+                                <LI>Ivan
+                                <LI>Adan
+                            </UL>
+                    </div></div></td></tr>
+        <tr><td>
+                <div class="polaroid">
+                    <img src="amigos/amigos3.jpg" alt="Amigos 3">
+                    <div class="container">
+                        <p>Recuerdo memorable con unos amigos, cuando pasamos a exponer elegantes.<br>
+                            <UL>
+                                <LI>Farid
+                                <LI>Alexander
+                                <LI>Miguel
+                            </UL>
+                    </div></div></td>
+            <td> <div class="polaroid">
+                    <img src="amigos/amigos4.jpg" alt="Amigos 4">
+                    <div class="container">
+                        <p>Dos grandes amigos.<br>
+                            <UL>
+                                <LI>Julian
+                                <LI>Erick
+                            </UL>
+                    </div></div>
+            </td></tr>
+    </table>
+</div>
+
+<footer>
+    <p>TECNM Instituto Tecnológico De Puebla - Manuel Minutti Moreno<br>Copyright © 2025. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

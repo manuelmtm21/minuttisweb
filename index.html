@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minutti´s Web</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logo.ico" type="image/x-icon">
+<script>
+    function actualizarTitulo(titulo) {
+        const logoFrame = window.frames['logoFrame'];
+        if (logoFrame) {
+            logoFrame.postMessage({
+                action: "actualizarTitulo",
+                titulo: titulo
+            }, "*");
+        }
+    }
+
+    function cargarSeccion(pagina, titulo) {
+        sessionStorage.setItem('ultimaSeccion', pagina);
+        sessionStorage.setItem('currentTitle', titulo);
+        
+        actualizarTitulo(titulo);
+        
+        const contenidoFrame = window.frames['contenidoFrame'];
+        if (contenidoFrame) {
+            contenidoFrame.location.href = pagina;
+        }
+        
+        try {
+            window.frames['menuIzquierdoFrame'].postMessage({
+                action: "actualizarMenu",
+                seccion: titulo
+            }, "*");
+        } catch(e) {
+            console.error("Error notificando al menú:", e);
+            setTimeout(() => {
+                window.frames['menuIzquierdoFrame'].postMessage({
+                    action: "actualizarMenu",
+                    seccion: titulo
+                }, "*");
+            }, 100);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            const paginaInicial = sessionStorage.getItem('ultimaSeccion') || 'sobre_mi.html';
+            const tituloInicial = sessionStorage.getItem('currentTitle') || "Sobre Mí";
+            
+            cargarSeccion(paginaInicial, tituloInicial);
+        }, 300);
+    });
+
+    window.addEventListener('message', function(event) {
+        if (event.data?.action === "cambioSeccion") {
+            const pagina = event.data.pagina;
+            const titulo = event.data.titulo || 
+                         pagina.replace('.html', ' ')
+                              .replace(/_/g, ' ')
+                              .replace(/\b\w/g, l => l.toUpperCase());
+            
+            cargarSeccion(pagina, titulo);
+        }
+    });
+</script>
+</head>
+<frameset rows="9%, *, 0" border="0">
+    <frame src="logo.html" name="logoFrame" scrolling="no" noresize>
+    <frameset cols="12%, 89%, 3.2%" border="0">
+        <frame src="menu_izquierdo.html" name="menuIzquierdoFrame" scrolling="no">
+        <frame src="sobre_mi.html" name="contenidoFrame" scrolling="auto">
+        <frame src="menu_derecho.html" name="menuDerechoFrame" scrolling="no">
+    </frameset>
+</frameset>
+</html>

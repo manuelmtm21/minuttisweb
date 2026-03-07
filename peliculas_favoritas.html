@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Películas Favoritas</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #7A9F35;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .contenedor {
+            animation: fadeIn 1s ease-in-out;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .pelicula {
+            text-align: center;
+            flex: 1 1 calc(20% - 20px);
+            max-width: calc(20% - 20px);
+        }
+        .pelicula img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        .pelicula img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1024px) {
+            .pelicula {
+                flex: 1 1 calc(33.33% - 20px);
+                max-width: calc(33.33% - 20px);
+            }
+        }
+        @media (max-width: 768px) {
+            .pelicula {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .pelicula {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+        footer {
+            background-color: #354F00;
+            color: white;
+            text-align: center;
+            padding: 3px 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            width: 100%;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 0;
+            font-weight: normal;
+        }    
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="pelicula"><a href="https://youtu.be/LYS2O1nl9iM?si=V54_xmJVCrDigbO0" target="_blank"><img src="peliculas/pelicula1.jpg" alt="Película 1"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/DWXJdezkThk?si=05gNda-rPvYKmXKY" target="_blank"><img src="peliculas/pelicula2.jpg" alt="Película 2"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/-tnxzJ0SSOw?si=WJzzv1gwDMlfebzR" target="_blank"><img src="peliculas/pelicula3.jpg" alt="Película 3"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/P8lfdvXkhu0?si=ajJwXaJmV1FYhfVW" target="_blank"><img src="peliculas/pelicula4.jpg" alt="Película 4"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/h1Xm9ynJKDM?si=H_5pMIaddGnnxjc0" target="_blank"><img src="peliculas/pelicula5.jpg" alt="Película 5"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/57vE58O4log?si=8KhM1Jl0L5fdQypS" target="_blank"><img src="peliculas/pelicula6.jpg" alt="Película 6"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/loZhGCtgE-o?si=mjljbiQ379Mc_D85" target="_blank"><img src="peliculas/pelicula7.jpg" alt="Película 7"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/tnx35Z4nWWc?si=Rk4BPFXhJoH3zcj0" target="_blank"><img src="peliculas/pelicula8.jpg" alt="Película 8"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/PkqHVGFAhbU?si=z0kXZhLVYXXKXCYG" target="_blank"><img src="peliculas/pelicula9.jpg" alt="Película 9"></a></div>
+        <div class="pelicula"><a href="https://youtu.be/re-COVREAoI?si=Lj5tfsOzy5CKOa5D" target="_blank"><img src="peliculas/pelicula10.jpg" alt="Película 10"></a></div>
+    </div>
+    
+    <footer>
+        <p>TECNM Instituto Tecnológico De Puebla - Manuel Minutti Moreno<br>Copyright © 2025. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

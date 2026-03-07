@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #4F6F00;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+        .left { width: 11.58%; background-color: #4F6F00; }
+        .center { 
+            width: 86%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4F6F00;
+        }
+        .right { width: 2%; background-color: #4F6F00; }
+        h1 {
+            font-size: 50px;
+            margin: 5px 0;
+            padding: 0px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .home-icon {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .home-icon:hover { transform: scale(1.1); }
+    </style>
+    <script>
+        function irInicio() {
+            try {
+                parent.postMessage({
+                    action: "cambioSeccion",
+                    pagina: "sobre_mi.html"
+                }, "*");
+            } catch(e) {
+                console.error("Error:", e);
+            }
+            return false;
+        }
+
+        window.addEventListener('message', function(event) {
+            if (event.data?.action === "actualizarTitulo") {
+                document.getElementById('logo-text').textContent = event.data.titulo;
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeButton = document.querySelector('.home-icon');
+            if (homeButton) {
+                homeButton.addEventListener('click', irInicio);
+            }
+            const storedTitle = sessionStorage.getItem('currentTitle') || "Sobre Mí";
+            document.getElementById('logo-text').textContent = storedTitle;
+        });
+    </script>
+</head>
+<body>
+    <div class="left">
+        <img src="casa.PNG" class="home-icon" alt="Inicio">
+    </div>
+    <div class="center">
+        <h1 id="logo-text">Sobre Mí</h1>
+    </div>
+    <div class="right"></div>
+</body>
+</html>

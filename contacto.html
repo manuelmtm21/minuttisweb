@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("BJlUkKjk80OFk7836");
+        })();
+
+        function sendEmail(event) {
+            event.preventDefault();
+
+            const fileInput = document.getElementById("archivo");
+
+            emailjs.sendForm("service_z0g9pz9", "template_pfbielp", event.target)
+                .then(() => {
+                    alert("Mensaje enviado con éxito");
+                    document.getElementById("miFormulario").reset();
+                })
+                .catch(error => {
+                    console.error("Error en EmailJS:", error);
+                    alert("Error al enviar el mensaje: " + error.text);
+                });
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #7A9F35;
+            display: flex;
+            flex-direction: column;
+            
+            align-items: center;
+            min-height: 100vh;
+            
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            animation: fadeIn 1s ease-in-out;
+            display: flex;
+            flex-wrap: wrap;
+            width: 95%;
+            max-width: 1200px;
+            background: #A5C663;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: auto;
+            border-radius: 15px;
+            margin-top: 75px;
+            margin-bottom: 50px;
+        }
+        .contact-form, .contact-info, .map {
+            flex: 1;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .contact-form input, 
+        .contact-form textarea, 
+        .contact-form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: black;
+            background-color: white;
+        }
+        .contact-form select {
+            color: grey;
+        }
+        .contact-form select option {
+            color: black;
+        }
+        .contact-form select:valid {
+            color: black;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .contact-form button:hover {
+            background: #ffb700;
+        }
+        .contact-info {
+            background: #222;
+            color: white;
+        }
+        .contact-info h3 {
+            color: #ffcc00;
+            margin-top: 10px;
+        }
+        .map {
+            flex: 1;
+            min-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .map iframe {
+            width: 100%;
+            height: 105%;
+            border: 0;
+            border-radius: 15px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .container .contact-form form label {
+            font-weight: bold;
+        }
+        .contact-form label[for="comentarios"] {
+            margin-bottom: 10px;
+            display: block;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: row;
+            gap: 60px;
+            align-items: center;
+        }
+        .radio-group label,
+        .checkbox-group label {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            margin-top: -10px;
+        }
+        .checkbox-group label:last-child {
+            margin-bottom: 6px;
+        }
+        footer, footer p  {
+            background-color: #354F00;
+            color: white;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            padding: 3px 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-form">
+            <h2>Contácteme</h2>
+            <form id="miFormulario" onsubmit="sendEmail(event)">
+                <p>
+                  <label for="name">Nombre</label>
+                  <input type="text" id="name" name="from_name" placeholder="Ingresa tu nombre" required>
+
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="from_email" placeholder="Ingresa tu correo electrónico" required>
+                  
+                  <label for="name">Teléfono</label>
+                  <input type="text" id="name" name="from_name" placeholder="Ingresa tu número" required>
+
+                  <label for="edad">Edad</label>
+                  <input type="number" id="edad" name="edad" placeholder="Ingresa tu edad" required>
+                  
+                  <label for="sexo">Sexo</label>
+                  <select id="sexo" name="sexo" aria-label="Sexo" required>
+                    <option value="" disabled selected>Selecciona tu sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                  
+                  <label for="trabajas">¿Trabajas?</label>
+                  <div class="radio-group">
+                      <label><input id="trabaja_si" name="trabajas" type="radio" value="Sí" required> Sí</label><br><br>
+                      <label><input id="trabaja_no" name="trabajas" type="radio" value="No" required> No</label>
+                  </div>
+
+                    <label for="intereses">Intereses</label>
+                    <select id="intereses" name="intereses" aria-label="Intereses" required>
+                      <option value="" disabled selected>Selecciona tu interés</option>
+                      <option value="Deportes">Deportes</option>
+                      <option value="Música">Música</option>
+                      <option value="Cine">Cine</option>
+                      <option value="Tecnología">Tecnología</option>
+                      <option value="Arte">Arte</option>
+                      <option value="Otros">Otros</option>
+                    </select>
+                    
+                    <label for="archivo">Adjuntar archivos</label>
+                    <input type="file" id="archivo" name="archivo" accept=".jpg, .png, .pdf, .zip, .rar" aria-label="Adjuntar archivo" onchange="validarArchivo(this)">
+                    
+                    <label for="pagina">¿Recomendarías mi página?</label><br><br>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="pagina_si" name="pagina_recomendada" value="si"> Sí</label>
+                        <label><input type="checkbox" id="pagina_no" name="pagina_recomendada" value="no"> No</label>
+                        <label><input type="checkbox" id="pagina_posiblemente" name="pagina_recomendada" value="posiblemente">Posiblemente </label>
+                    </div>
+                    
+                    <label for="provincia">Indique su provincia:</label>
+                    <select id="provincia" name="provincia" required>
+                        <option value="" disabled selected>Selecciona tu provincia</option>
+                        <option value="Ciudad de México">Ciudad de México</option>
+                        <option value="Jalisco">Jalisco</option>
+                        <option value="Nuevo León">Nuevo León</option>
+                        <option value="Puebla">Puebla</option>
+                        <option value="Veracruz">Veracruz</option>
+                        <option value="Otras">Otras</option>
+                    </select>
+                    
+                            
+                    <label for="dispositivo">Dispositivo:</label>
+                    <select name="dispositivo" size="5" multiple tabindex="12" accesskey="d">
+                        <option value="Celular">Celular</option>
+                        <option value="Tableta">Tableta</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Computadora de escritorio">Computadora de escritorio</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                    
+                    <label for="comentarios">Tienes comentarios sobre mi página?, Opina aquí abajo y dime que piensas!</label>
+                    <textarea id="comentarios" name="comentarios" maxlength="500" placeholder="Escribe aquí tus comentarios (Máximo 500 caracteres)"></textarea>
+                    
+                    </p>
+                  </p>
+                <button type="submit">ENVIAR</button>
+            </form>
+        </div>
+        <div class="contact-info">
+            <br><h3>NOMBRE</h3>
+            <p>Manuel Minutti Moreno</p><br>
+            <h3>CORREO ELECTRÓNICO</h3>
+            <p>manuelminuttimoreno2109uni@gmail.com</p><br>
+            <h3>NÚMERO TEL.</h3>
+            <p>222-930-9011</p><br>
+            <h3>LOCALIZACIÓN</h3>
+            <p>Del Tecnológico 420, Corredor Industrial la Ciénega, 72220 Heroica Puebla de Zaragoza, Pue.</p><br>
+            <h3>UNIVERSIDAD</h3>
+            <p>Instituto Tecnológico De Puebla</p><br>
+            <h3>CARRERA</h3>
+            <p>Tecnologías de la Información y las Comunicaciones</p>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.8829705857806!2d-98.1707443239096!3d19.068882382134184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc1a52226fe83%3A0x189ca4d259102630!2sInstituto%20Tecnol%C3%B3gico%20de%20Puebla!5e0!3m2!1ses-419!2smx!4v1741839757727!5m2!1ses-419!2smx" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+    <footer>
+        <p>TECNM Instituto Tecnológico De Puebla - Manuel Minutti Moreno<br>Copyright © 2025. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
